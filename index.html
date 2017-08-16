@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="../css/main.css" media="all"/>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '409508706110220',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+function facebookLogin(){
+    FB.login(function(response) {
+		
+  if (response.status === 'connected') {
+    window.location.href= "./HomePage.html";
+  } else {
+    window.location.href = 'self';
+  }
+});
+}
+</script>
+<div align="left" class="div">
+	<h4>Login</h4>
+	
+		<label>Username:</label>
+		<input type="text" name="Username" placeholder="Enter Email"/>
+	<br>
+		<label>Password:</label>
+		<input type="password" name="password" placeholder="Enter Password"/>
+	<br>
+	<input type="Submit" name="login" value="Login">
+	<input type="Submit" name="forgetPassword" value="Forget Password"/>
+	<br>
+	
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">
+		<input type="Submit" name="fblogin" value="Continue with Facebook" class="button" width="100" onclick="facebookLogin();" />
+	</div>
+</div>
+</body>
+</html>
